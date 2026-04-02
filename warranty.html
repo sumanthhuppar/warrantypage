@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Digital Warranty / Register Product | V-Guard</title>
+    <meta name="description" content="Register your V-Guard product and activate your digital warranty for hassle-free support, service reminders, and exclusive offers.">
+    <link rel="stylesheet" href="warranty.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <img src="images/vguard-logo-transparent.png" alt="V-Guard Logo" class="logo">
+        </div>
+        <div class="nav-center">
+            <h1>Digital Warranty / Register Product</h1>
+        </div>
+        <div class="nav-right">
+            <div class="hamburger" id="nav-toggle">☰</div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <h2>Activate Your Digital Warranty</h2>
+        <p>Register your V-Guard product and enjoy hassle-free warranty support, service reminders and exclusive offers</p>
+        <div class="trust-badges">
+            <div class="badge">🛡️ Instant Warranty Activation</div>
+            <div class="badge">📱 SMS & Email Alerts</div>
+            <div class="badge">🔧 Priority Service Support</div>
+        </div>
+    </header>
+
+    <!-- CUSTOMER CARE TABS -->
+    <div class="tabs-container">
+        <div class="tabs">
+            <div class="tab" onclick="showToast('Customer Care')">Customer Care</div>
+            <div class="tab active">Digital Warranty</div>
+            <div class="tab" onclick="showToast('Register Complaint')">Register Complaint</div>
+            <div class="tab" onclick="showToast('Installation Request')">Installation Request</div>
+            <div class="tab" onclick="showToast('Product Authentication')">Product Authentication</div>
+            <div class="tab" onclick="showToast('Contact Us')">Contact Us</div>
+        </div>
+    </div>
+
+    <!-- WHATSAPP BANNER -->
+    <div class="whatsapp-banner">
+        <div class="wa-content">
+            <span class="wa-icon">WhatsApp</span>
+            <div class="wa-text">
+                <h4>Connect with us via WhatsApp</h4>
+                <p>Get instant help for warranty, registration, complaints and more</p>
+            </div>
+        </div>
+        <a href="https://wa.me/919633503333" class="wa-btn" target="_blank">Chat Now →</a>
+    </div>
+
+    <!-- MAIN REGISTRATION FORM -->
+    <main class="form-card">
+        <div class="form-header">
+            <p>Please fill in the form below to activate your digital warranty or to register your product.</p>
+            <div class="mandatory-note">All fields marked with * are mandatory</div>
+        </div>
+
+        <form id="warrantyForm" novalidate>
+            
+            <!-- SECTION 1: PERSONAL DETAILS -->
+            <div class="section-heading">Personal Details</div>
+            
+            <div class="input-row">
+                <div class="input-group">
+                    <label class="input-label">Title *</label>
+                    <select id="title" required>
+                        <option value="">Select</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="M/S">M/S</option>
+                    </select>
+                    <div class="error-text">Please select a title</div>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">Full Name *</label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    <div class="error-text">Please enter your full name</div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Email Address *</label>
+                <input type="email" id="email" placeholder="your@email.com" required>
+                <div class="error-text">Please enter a valid email address</div>
+            </div>
+
+            <!-- OTP VERIFICATION -->
+            <div class="input-group" id="mobile-section">
+                <label class="input-label">OTP Mobile Number *</label>
+                <div style="display: flex; gap: 10px;">
+                    <div class="input-with-prefix" style="flex: 1;">
+                        <span class="prefix">+91</span>
+                        <input type="tel" id="otpMobile" placeholder="10 digit mobile number" maxlength="10" required>
+                    </div>
+                    <button type="button" class="btn-send-otp" id="btnSendOtp">Send OTP</button>
+                </div>
+                <div id="otp-sent-msg" style="color: var(--success-green); font-size: 0.8rem; margin-top: 5px; display: none;">OTP sent successfully to your number</div>
+            </div>
+
+            <div id="verify-otp-section" style="display: none;">
+                <label class="input-label">Verify OTP *</label>
+                <div class="otp-container">
+                    <input type="text" maxlength="1" class="otp-box">
+                    <input type="text" maxlength="1" class="otp-box">
+                    <input type="text" maxlength="1" class="otp-box">
+                    <input type="text" maxlength="1" class="otp-box">
+                    <input type="text" maxlength="1" class="otp-box">
+                    <input type="text" maxlength="1" class="otp-box">
+                </div>
+                <a href="#" class="resend-link" id="btnResend">Resend OTP</a>
+                <span id="timer" style="font-size: 0.8rem; color: #666; margin-left: 10px;">Resend in 30s</span>
+                <div id="otp-success-msg" style="color: var(--success-green); font-size: 0.85rem; margin-top: 8px; font-weight: 500; display: none;">✅ OTP Verified Successfully</div>
+            </div>
+
+            <div class="input-group" style="margin-top: 25px;">
+                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
+                    <input type="checkbox" id="sameMobile" style="width: auto;">
+                    Registered Mobile Number same as OTP Mobile Number
+                </label>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Registered Mobile Number *</label>
+                <div class="input-with-prefix">
+                    <span class="prefix">+91</span>
+                    <input type="tel" id="regMobile" placeholder="10 digit mobile number" maxlength="10" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Alternate Contact Number</label>
+                <div class="input-with-prefix">
+                    <span class="prefix">+91</span>
+                    <input type="tel" id="altMobile" placeholder="10 digit mobile number (optional)" maxlength="10">
+                </div>
+            </div>
+
+            <!-- SECTION 2: ADDRESS DETAILS -->
+            <div class="section-heading">Address Details</div>
+            
+            <div class="input-group">
+                <label class="input-label">Address *</label>
+                <textarea id="address" rows="3" placeholder="House No, Street, Area" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Landmark *</label>
+                <input type="text" id="landmark" placeholder="Near landmark" required>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label class="input-label">State *</label>
+                    <select id="state" required>
+                        <option value="">Select State</option>
+                        <option>Andaman & Nicobar Islands</option>
+                        <option>Andhra Pradesh</option>
+                        <option>Arunachal Pradesh</option>
+                        <option>Assam</option>
+                        <option>Bihar</option>
+                        <option>Chandigarh</option>
+                        <option>Chhattisgarh</option>
+                        <option>Delhi</option>
+                        <option>Goa</option>
+                        <option>Gujarat</option>
+                        <option>Haryana</option>
+                        <option>Himachal Pradesh</option>
+                        <option>Jammu & Kashmir</option>
+                        <option>Jharkhand</option>
+                        <option>Karnataka</option>
+                        <option>Kerala</option>
+                        <option>Madhya Pradesh</option>
+                        <option>Maharashtra</option>
+                        <option>Manipur</option>
+                        <option>Meghalaya</option>
+                        <option>Mizoram</option>
+                        <option>Nagaland</option>
+                        <option>Odisha</option>
+                        <option>Pondicherry</option>
+                        <option>Punjab</option>
+                        <option>Rajasthan</option>
+                        <option>Sikkim</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Tripura</option>
+                        <option>Uttar Pradesh</option>
+                        <option>Uttarakhand</option>
+                        <option>West Bengal</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">District *</label>
+                    <input type="text" id="district" placeholder="Enter district" required>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label class="input-label">City *</label>
+                    <input type="text" id="city" placeholder="Enter city" required>
+                </div>
+                <div class="input-group">
+                    <label class="input-label">PIN Code *</label>
+                    <input type="number" id="pinCode" placeholder="6 digit PIN code" maxlength="6" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Country</label>
+                <input type="text" value="India" disabled>
+            </div>
+
+            <!-- SECTION 3: PRODUCT DETAILS -->
+            <div class="section-heading">Product Details</div>
+
+            <div class="input-group">
+                <label class="input-label">Product Serial Number *</label>
+                <div style="position: relative;">
+                    <input type="text" id="serialNumber" placeholder="Enter serial number (Numbers & uppercase alphabets only)" style="text-transform: uppercase;" required>
+                    <button type="button" id="scanBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1.2rem;">📷</button>
+                </div>
+                <div class="info-box">
+                    <span>ℹ️</span>
+                    <span>Where to find serial number?<br>Check the product body, carton box or warranty card for the serial number</span>
+                </div>
+                <p style="font-size: 0.8rem; color: #666; margin-top: -10px; margin-bottom: 20px;">Or scan QR code on product</p>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Model Name *</label>
+                <input type="text" id="modelName" placeholder="e.g. Divino DG 15L" required>
+                <select id="category" style="margin-top: 10px;">
+                    <option value="">Select Category</option>
+                    <option>Voltage Stabilizers</option>
+                    <option>Inverter & Batteries</option>
+                    <option>Water Heaters</option>
+                    <option>Ceiling Fans</option>
+                    <option>Kitchen Appliances</option>
+                    <option>Water Purifiers</option>
+                    <option>Pumps</option>
+                    <option>Air Coolers</option>
+                    <option>Solar Products</option>
+                    <option>Modular Switches</option>
+                    <option>Wires & Cables</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Warranty Proof *</label>
+                <div style="display: flex; gap: 20px; font-size: 0.95rem;">
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="radio" name="proofType" value="Invoice" style="width: auto;" checked> Bill / Invoice
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                        <input type="radio" name="proofType" value="Warranty Card" style="width: auto;"> Warranty Card
+                    </label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Date of Purchase *</label>
+                <input type="date" id="purchaseDate" required>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Upload Warranty Proof Copy *</label>
+                <div class="upload-area" id="dropZone">
+                    <span class="upload-icon">📤</span>
+                    <p id="uploadText">Drag and drop area OR click to upload</p>
+                    <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Accepted: JPG, PNG, PDF only (Max: 5MB)</p>
+                    <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
+                </div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="file-preview" id="filePreview">
+                    <span id="previewName" style="flex: 1; font-size: 0.85rem; font-weight: 500;">document.pdf</span>
+                    <button type="button" id="removeFile" style="background: none; border: none; color: var(--error-red); cursor: pointer; font-weight: 700;">✕</button>
+                </div>
+            </div>
+
+            <!-- SECTION 4: PREFERENCES -->
+            <div class="section-heading">Preferences (Optional)</div>
+
+            <div class="input-group">
+                <label class="input-label">Preferred Language for Callback</label>
+                <select id="language">
+                    <option value="">Select</option>
+                    <option>Hindi</option>
+                    <option>English</option>
+                    <option>Malayalam</option>
+                    <option>Tamil</option>
+                    <option>Telugu</option>
+                    <option>Kannada</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Dealer's Name</label>
+                <input type="text" id="dealerName" placeholder="Name of dealer (optional)">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Dealer's Address</label>
+                <input type="text" id="dealerAddress" placeholder="Dealer address (optional)">
+            </div>
+
+            <div class="input-group">
+                <label class="input-label">Dealer's Contact Number</label>
+                <div class="input-with-prefix">
+                    <span class="prefix">+91</span>
+                    <input type="tel" id="dealerContact" placeholder="Dealer contact (optional)" maxlength="10">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; cursor: pointer;">
+                    <input type="checkbox" id="smsUpdates" style="width: auto; margin-top: 3px;">
+                    <div>
+                        Interested in receiving SMS updates
+                        <p style="font-size: 0.75rem; color: #888;">(To be selected by Dealer only)</p>
+                    </div>
+                </label>
+            </div>
+
+            <div class="submit-container">
+                <button type="submit" class="btn-submit" id="btnSubmit">
+                    🛡️ Activate Warranty & Register Product
+                </button>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- CUSTOMER CARE SECTION -->
+    <div style="max-width: 750px; margin: 0 auto 30px; padding: 0 20px;">
+        <div style="background: white; border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow-subtle);">
+            <h3 style="color: var(--primary-red); font-size: 1.1rem; border-bottom: 1px solid #EEE; padding-bottom: 15px; margin-bottom: 15px;">V-GUARD CUSTOMER CARE</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9rem;">
+                <p>📧 Email: <strong>customercare@vguard.in</strong></p>
+                <p>📞 Call Centre: <strong>0120-4850100</strong></p>
+                <p>📞 Toll: <strong>1860-180-3000</strong></p>
+                <p>🕐 Timing: <strong>9am to 7pm Mon-Sat</strong><br><small>9am to 6pm Sunday</small></p>
+            </div>
+            <div style="margin-top: 20px; color: var(--primary-red); font-weight: 600;">
+                <span style="font-size: 1.2rem;">📍</span> Find Dealer/Service Centre near you →
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col">
+                <img src="images/vguard-logo-transparent.png" alt="V-Guard Logo" style="height: 40px; margin-bottom: 20px;">
+                <p style="font-size: 0.85rem; color: #666;">Enriching lives through innovative engineering. India's most trusted brand for electrical and home appliances.</p>
+            </div>
+            <div class="footer-col">
+                <h5>QUICK LINKS</h5>
+                <ul>
+                    <li>About Us</li>
+                    <li>Sustainability</li>
+                    <li>Investor Relations</li>
+                    <li>Careers</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>PRODUCTS</h5>
+                <ul>
+                    <li>Voltage Stabilizers</li>
+                    <li>Water Heaters</li>
+                    <li>Inverters</li>
+                    <li>Fans</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>SUPPORT</h5>
+                <ul>
+                    <li>Contact Us</li>
+                    <li>Find Dealer</li>
+                    <li>Warranty Terms</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 V-Guard Industries Ltd. All Rights Reserved | Made in India
+        </div>
+    </footer>
+
+    <!-- SUCCESS OVERLAY -->
+    <div class="overlay" id="successOverlay">
+        <div class="success-card">
+            <div class="checkmark-circle">✓</div>
+            <h2 style="color: var(--success-green); margin-bottom: 5px;">Warranty Activated Successfully!</h2>
+            <p style="color: var(--text-grey); font-size: 0.95rem;">Your product has been registered</p>
+            
+            <div class="reg-details-card">
+                <div class="reg-row">
+                    <span>Registration ID:</span>
+                    <span id="res-id">WR-1234567890</span>
+                </div>
+                <div class="reg-row">
+                    <span>Product:</span>
+                    <span id="res-product">Divino DG 15L</span>
+                </div>
+                <div class="reg-row">
+                    <span>Serial Number:</span>
+                    <span id="res-serial">ABC123XYZ456</span>
+                </div>
+                <div class="reg-row">
+                    <span>Date of Purchase:</span>
+                    <span id="res-date">01-Apr-2026</span>
+                </div>
+                <div class="reg-row">
+                    <span>Warranty Valid Until:</span>
+                    <span id="res-valid">01-Apr-2028</span>
+                </div>
+                <div class="reg-row">
+                    <span>Registered Mobile:</span>
+                    <span id="res-mobile">+91 9876543210</span>
+                </div>
+            </div>
+
+            <button class="btn-submit" id="btnDownload" style="margin-bottom: 12px; font-size: 1rem;">📥 Download Warranty Certificate</button>
+            <button id="btnBackHome" style="background: transparent; border: 2px solid var(--primary-red); color: var(--primary-red); width: 100%; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer;">🏠 Back to Home</button>
+        </div>
+    </div>
+
+    <script src="warranty.js"></script>
+</body>
+</html>
