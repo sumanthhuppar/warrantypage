@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Digital Warranty / Register Product | V-Guard</title>
-    <meta name="description" content="Register your V-Guard product and activate your digital warranty for hassle-free support, service reminders, and exclusive offers.">
-    <link rel="stylesheet" href="warranty.css">
+    <meta name="description"
+        content="Register your V-Guard product and activate your digital warranty for hassle-free support, service reminders, and exclusive offers.">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <!-- NAVBAR -->
@@ -25,7 +29,8 @@
     <!-- HERO SECTION -->
     <header class="hero">
         <h2>Activate Your Digital Warranty</h2>
-        <p>Register your V-Guard product and enjoy hassle-free warranty support, service reminders and exclusive offers</p>
+        <p>Register your V-Guard product and enjoy hassle-free warranty support, service reminders and exclusive offers
+        </p>
         <div class="trust-badges">
             <div class="badge">🛡️ Instant Warranty Activation</div>
             <div class="badge">📱 SMS & Email Alerts</div>
@@ -65,10 +70,10 @@
         </div>
 
         <form id="warrantyForm" novalidate>
-            
+
             <!-- SECTION 1: PERSONAL DETAILS -->
             <div class="section-heading">Personal Details</div>
-            
+
             <div class="input-row">
                 <div class="input-group">
                     <label class="input-label">Title *</label>
@@ -104,7 +109,9 @@
                     </div>
                     <button type="button" class="btn-send-otp" id="btnSendOtp">Send OTP</button>
                 </div>
-                <div id="otp-sent-msg" style="color: var(--success-green); font-size: 0.8rem; margin-top: 5px; display: none;">OTP sent successfully to your number</div>
+                <div id="otp-sent-msg"
+                    style="color: var(--success-green); font-size: 0.8rem; margin-top: 5px; display: none;">OTP sent
+                    successfully to your number</div>
             </div>
 
             <div id="verify-otp-section" style="display: none;">
@@ -119,7 +126,9 @@
                 </div>
                 <a href="#" class="resend-link" id="btnResend">Resend OTP</a>
                 <span id="timer" style="font-size: 0.8rem; color: #666; margin-left: 10px;">Resend in 30s</span>
-                <div id="otp-success-msg" style="color: var(--success-green); font-size: 0.85rem; margin-top: 8px; font-weight: 500; display: none;">✅ OTP Verified Successfully</div>
+                <div id="otp-success-msg"
+                    style="color: var(--success-green); font-size: 0.85rem; margin-top: 8px; font-weight: 500; display: none;">
+                    ✅ OTP Verified Successfully</div>
             </div>
 
             <div class="input-group" style="margin-top: 25px;">
@@ -147,7 +156,7 @@
 
             <!-- SECTION 2: ADDRESS DETAILS -->
             <div class="section-heading">Address Details</div>
-            
+
             <div class="input-group">
                 <label class="input-label">Address *</label>
                 <textarea id="address" rows="3" placeholder="House No, Street, Area" required></textarea>
@@ -226,14 +235,19 @@
             <div class="input-group">
                 <label class="input-label">Product Serial Number *</label>
                 <div style="position: relative;">
-                    <input type="text" id="serialNumber" placeholder="Enter serial number (Numbers & uppercase alphabets only)" style="text-transform: uppercase;" required>
-                    <button type="button" id="scanBtn" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1.2rem;">📷</button>
+                    <input type="text" id="serialNumber"
+                        placeholder="Enter serial number (Numbers & uppercase alphabets only)"
+                        style="text-transform: uppercase;" required>
+                    <button type="button" id="scanBtn"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1.2rem;">📷</button>
                 </div>
                 <div class="info-box">
                     <span>ℹ️</span>
-                    <span>Where to find serial number?<br>Check the product body, carton box or warranty card for the serial number</span>
+                    <span>Where to find serial number?<br>Check the product body, carton box or warranty card for the
+                        serial number</span>
                 </div>
-                <p style="font-size: 0.8rem; color: #666; margin-top: -10px; margin-bottom: 20px;">Or scan QR code on product</p>
+                <p style="font-size: 0.8rem; color: #666; margin-top: -10px; margin-bottom: 20px;">Or scan QR code on
+                    product</p>
             </div>
 
             <div class="input-group">
@@ -259,7 +273,8 @@
                 <label class="input-label">Warranty Proof *</label>
                 <div style="display: flex; gap: 20px; font-size: 0.95rem;">
                     <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="radio" name="proofType" value="Invoice" style="width: auto;" checked> Bill / Invoice
+                        <input type="radio" name="proofType" value="Invoice" style="width: auto;" checked> Bill /
+                        Invoice
                     </label>
                     <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
                         <input type="radio" name="proofType" value="Warranty Card" style="width: auto;"> Warranty Card
@@ -277,7 +292,8 @@
                 <div class="upload-area" id="dropZone">
                     <span class="upload-icon">📤</span>
                     <p id="uploadText">Drag and drop area OR click to upload</p>
-                    <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Accepted: JPG, PNG, PDF only (Max: 5MB)</p>
+                    <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Accepted: JPG, PNG, PDF only (Max: 5MB)
+                    </p>
                     <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
                 </div>
                 <div class="progress-bar" id="progressBar">
@@ -285,7 +301,8 @@
                 </div>
                 <div class="file-preview" id="filePreview">
                     <span id="previewName" style="flex: 1; font-size: 0.85rem; font-weight: 500;">document.pdf</span>
-                    <button type="button" id="removeFile" style="background: none; border: none; color: var(--error-red); cursor: pointer; font-weight: 700;">✕</button>
+                    <button type="button" id="removeFile"
+                        style="background: none; border: none; color: var(--error-red); cursor: pointer; font-weight: 700;">✕</button>
                 </div>
             </div>
 
@@ -345,7 +362,9 @@
     <!-- CUSTOMER CARE SECTION -->
     <div style="max-width: 750px; margin: 0 auto 30px; padding: 0 20px;">
         <div style="background: white; border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow-subtle);">
-            <h3 style="color: var(--primary-red); font-size: 1.1rem; border-bottom: 1px solid #EEE; padding-bottom: 15px; margin-bottom: 15px;">V-GUARD CUSTOMER CARE</h3>
+            <h3
+                style="color: var(--primary-red); font-size: 1.1rem; border-bottom: 1px solid #EEE; padding-bottom: 15px; margin-bottom: 15px;">
+                V-GUARD CUSTOMER CARE</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9rem;">
                 <p>📧 Email: <strong>customercare@vguard.in</strong></p>
                 <p>📞 Call Centre: <strong>0120-4850100</strong></p>
@@ -362,8 +381,10 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-col">
-                <img src="images/vguard-logo-transparent.png" alt="V-Guard Logo" style="height: 40px; margin-bottom: 20px;">
-                <p style="font-size: 0.85rem; color: #666;">Enriching lives through innovative engineering. India's most trusted brand for electrical and home appliances.</p>
+                <img src="images/vguard-logo-transparent.png" alt="V-Guard Logo"
+                    style="height: 40px; margin-bottom: 20px;">
+                <p style="font-size: 0.85rem; color: #666;">Enriching lives through innovative engineering. India's most
+                    trusted brand for electrical and home appliances.</p>
             </div>
             <div class="footer-col">
                 <h5>QUICK LINKS</h5>
@@ -404,7 +425,7 @@
             <div class="checkmark-circle">✓</div>
             <h2 style="color: var(--success-green); margin-bottom: 5px;">Warranty Activated Successfully!</h2>
             <p style="color: var(--text-grey); font-size: 0.95rem;">Your product has been registered</p>
-            
+
             <div class="reg-details-card">
                 <div class="reg-row">
                     <span>Registration ID:</span>
@@ -432,11 +453,15 @@
                 </div>
             </div>
 
-            <button class="btn-submit" id="btnDownload" style="margin-bottom: 12px; font-size: 1rem;">📥 Download Warranty Certificate</button>
-            <button id="btnBackHome" style="background: transparent; border: 2px solid var(--primary-red); color: var(--primary-red); width: 100%; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer;">🏠 Back to Home</button>
+            <button class="btn-submit" id="btnDownload" style="margin-bottom: 12px; font-size: 1rem;">📥 Download
+                Warranty Certificate</button>
+            <button id="btnBackHome"
+                style="background: transparent; border: 2px solid var(--primary-red); color: var(--primary-red); width: 100%; padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer;">🏠
+                Back to Home</button>
         </div>
     </div>
 
-    <script src="warranty.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
