@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const showToast = (msg) => {
         const toast = document.createElement('div');
         toast.style.cssText = `
-            position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+            position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
             background: #333; color: white; padding: 10px 20px; border-radius: 50px;
             font-size: 0.85rem; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             animation: slideUp 0.3s ease-out;
@@ -14,6 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => toast.remove(), 3000);
     };
     window.showToast = showToast;
+
+    const hapticFeedback = (pattern = 50) => {
+        if ('vibrate' in navigator) navigator.vibrate(pattern);
+    };
 
     // --- FORM ELEMENTS ---
     const form = document.getElementById('warrantyForm');
@@ -98,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (enteredOtp === '123456' || true) { // Simulating auto-verify for demo
                     document.getElementById('otp-success-msg').style.display = 'block';
                     isOtpVerified = true;
+                    hapticFeedback([50, 30, 50]); // Success vibration
                     otpBoxes.forEach(b => b.style.borderColor = 'var(--success-green)');
                 }
             }
@@ -200,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 parent.classList.add('has-error');
                 parent.querySelector('.error-text')?.style.setProperty('display', 'block');
                 if (!hasError) {
+                    hapticFeedback(100); // Error vibration
                     field.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     field.classList.add('shake');
                     setTimeout(() => field.classList.remove('shake'), 500);

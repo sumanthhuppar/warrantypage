@@ -29,6 +29,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -573,19 +574,74 @@ input:focus, select:focus, textarea:focus {
     
     .btn-submit {
         position: fixed;
-        bottom: 20px;
+        bottom: calc(20px + env(safe-area-inset-bottom));
         left: 20px;
         right: 20px;
         width: calc(100% - 40px);
         z-index: 900;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    body {
+        padding-bottom: calc(100px + env(safe-area-inset-bottom));
     }
     
-    body {
-        padding-bottom: 100px;
+    .navbar {
+        height: auto;
+        min-height: 70px;
+        padding-top: env(safe-area-inset-top);
     }
     
     .otp-box {
         width: 50px;
         height: 50px;
     }
+
+    /* Tactile Feedback */
+    .btn-submit:active, .btn-send-otp:active, .wa-btn:active, .tab:active {
+        transform: scale(0.98);
+        opacity: 0.9;
+    }
+}
+
+/* ULTRA SMALL SCREENS (e.g. iPhone SE 1st Gen) */
+@media (max-width: 320px) {
+    .nav-center h1 {
+        font-size: 0.75rem;
+    }
+    .hero h2 {
+        font-size: 1.35rem;
+    }
+    .hero p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+    .badge {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+    .form-card {
+        padding: 15px;
+    }
+    .otp-box {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    .btn-send-otp {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+    .section-heading {
+        font-size: 1rem;
+    }
+    .tabs-container {
+        padding: 0;
+    }
+    .tab {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+    }
+}
 }
