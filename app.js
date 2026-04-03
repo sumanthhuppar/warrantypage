@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- FORM ELEMENTS ---
     const form = document.getElementById('warrantyForm');
+    const fullNameInput = document.getElementById('fullName');
     const emailInput = document.getElementById('email');
     const productNameSelect = document.getElementById('productName');
     const productIdInput = document.getElementById('productid');
@@ -64,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Show Success Overlay
+        document.getElementById('res-name').textContent = fullNameInput.value;
         document.getElementById('res-email').textContent = emailInput.value;
         document.getElementById('res-product').textContent = productNameSelect.options[productNameSelect.selectedIndex].text;
         document.getElementById('res-id').textContent = productIdInput.value;
