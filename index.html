@@ -71,288 +71,63 @@
 
         <form id="warrantyForm" novalidate>
 
-            <!-- SECTION 1: PERSONAL DETAILS -->
-            <div class="section-heading">Personal Details</div>
-
-            <div class="input-row">
-                <div class="input-group">
-                    <label class="input-label">Title *</label>
-                    <select id="title" required>
-                        <option value="">Select</option>
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Miss">Miss</option>
-                        <option value="M/S">M/S</option>
-                    </select>
-                    <div class="error-text">Please select a title</div>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">Full Name *</label>
-                    <input type="text" id="fullName" placeholder="Enter your full name" required>
-                    <div class="error-text">Please enter your full name</div>
-                </div>
-            </div>
-
             <div class="input-group">
-                <label class="input-label">Email Address *</label>
+                <label class="input-label" for="email">Email Address *</label>
                 <input type="email" id="email" placeholder="your@email.com" required>
                 <div class="error-text">Please enter a valid email address</div>
             </div>
 
-            <!-- OTP VERIFICATION -->
-            <div class="input-group" id="mobile-section">
-                <label class="input-label">OTP Mobile Number *</label>
-                <div style="display: flex; gap: 10px;">
-                    <div class="input-with-prefix" style="flex: 1;">
-                        <span class="prefix">+91</span>
-                        <input type="tel" id="otpMobile" placeholder="10 digit mobile number" maxlength="10" inputmode="tel" autocomplete="tel" required>
-                    </div>
-                    <button type="button" class="btn-send-otp" id="btnSendOtp">Send OTP</button>
-                </div>
-                <div id="otp-sent-msg"
-                    style="color: var(--success-green); font-size: 0.8rem; margin-top: 5px; display: none;">OTP sent
-                    successfully to your number</div>
-            </div>
-
-            <div id="verify-otp-section" style="display: none;">
-                <label class="input-label">Verify OTP *</label>
-                <div class="otp-container">
-                    <input type="text" maxlength="1" class="otp-box" inputmode="numeric">
-                    <input type="text" maxlength="1" class="otp-box" inputmode="numeric">
-                    <input type="text" maxlength="1" class="otp-box" inputmode="numeric">
-                    <input type="text" maxlength="1" class="otp-box" inputmode="numeric">
-                    <input type="text" maxlength="1" class="otp-box" inputmode="numeric">
-                    <input type="text" maxlength="1" class="otp-box" inputmode="numeric">
-                </div>
-                <a href="#" class="resend-link" id="btnResend">Resend OTP</a>
-                <span id="timer" style="font-size: 0.8rem; color: #666; margin-left: 10px;">Resend in 30s</span>
-                <div id="otp-success-msg"
-                    style="color: var(--success-green); font-size: 0.85rem; margin-top: 8px; font-weight: 500; display: none;">
-                    ✅ OTP Verified Successfully</div>
-            </div>
-
-            <div class="input-group" style="margin-top: 25px;">
-                <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                    <input type="checkbox" id="sameMobile" style="width: auto;">
-                    Registered Mobile Number same as OTP Mobile Number
-                </label>
+            <div class="input-group">
+                <label class="input-label" for="productName">Product Name *</label>
+                <select id="productName" required>
+                    <option value="">Select a product</option>
+                    <option value="VG-WH-001">Divino Water Heater</option>
+                    <option value="VG-WH-002">Pebble Shine Heater</option>
+                    <option value="VG-WH-003">Victo Instant Geyser</option>
+                    <option value="VG-FAN-001">Glado Ceiling Fan</option>
+                    <option value="VG-FAN-002">DERA Deco Fan</option>
+                    <option value="VG-FAN-003">Ecowind BLDC Fan</option>
+                    <option value="VG-STB-001">Crystal Plus Stabilizer</option>
+                    <option value="VG-STB-002">VND 400 Stabilizer</option>
+                    <option value="VG-STB-003">Mini Crystal Stabilizer</option>
+                    <option value="VG-WP-001">Zenora Purifier</option>
+                    <option value="VG-WP-002">Rejive Purifier</option>
+                    <option value="VG-KA-001">Ignite Mixer Grinder</option>
+                    <option value="VG-KA-002">Induction Cooktop</option>
+                    <option value="VG-KA-003">Steam Iron</option>
+                    <option value="VG-KA-004">Rice Cooker</option>
+                    <option value="VG-INV-001">Sinewave Inverter</option>
+                    <option value="VG-INV-002">Inverter Battery</option>
+                    <option value="VG-PMP-001">Self Priming Pump</option>
+                    <option value="VG-PMP-002">Submersible Pump</option>
+                    <option value="VG-AC-001">Desert Air Cooler</option>
+                    <option value="VG-SOL-001">Solar Water Heater</option>
+                    <option value="VG-SW-001">Modular Switch Kit</option>
+                </select>
+                <div class="error-text">Please select a product</div>
             </div>
 
             <div class="input-group">
-                <label class="input-label">Registered Mobile Number *</label>
-                <div class="input-with-prefix">
-                    <span class="prefix">+91</span>
-                    <input type="tel" id="regMobile" placeholder="10 digit mobile number" maxlength="10" inputmode="tel" autocomplete="tel" required>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Alternate Contact Number</label>
-                <div class="input-with-prefix">
-                    <span class="prefix">+91</span>
-                    <input type="tel" id="altMobile" placeholder="10 digit mobile number (optional)" maxlength="10" inputmode="tel" autocomplete="tel">
-                </div>
-            </div>
-
-            <!-- SECTION 2: ADDRESS DETAILS -->
-            <div class="section-heading">Address Details</div>
-
-            <div class="input-group">
-                <label class="input-label">Address *</label>
-                <textarea id="address" rows="3" placeholder="House No, Street, Area" required></textarea>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Landmark *</label>
-                <input type="text" id="landmark" placeholder="Near landmark" required>
+                <label class="input-label" for="productid">Product ID</label>
+                <input type="text" id="productid" placeholder="Auto-populated" readonly style="background: #f5f5f5; color: #666; cursor: not-allowed;">
             </div>
 
             <div class="input-row">
                 <div class="input-group">
-                    <label class="input-label">State *</label>
-                    <select id="state" required>
-                        <option value="">Select State</option>
-                        <option>Andaman & Nicobar Islands</option>
-                        <option>Andhra Pradesh</option>
-                        <option>Arunachal Pradesh</option>
-                        <option>Assam</option>
-                        <option>Bihar</option>
-                        <option>Chandigarh</option>
-                        <option>Chhattisgarh</option>
-                        <option>Delhi</option>
-                        <option>Goa</option>
-                        <option>Gujarat</option>
-                        <option>Haryana</option>
-                        <option>Himachal Pradesh</option>
-                        <option>Jammu & Kashmir</option>
-                        <option>Jharkhand</option>
-                        <option>Karnataka</option>
-                        <option>Kerala</option>
-                        <option>Madhya Pradesh</option>
-                        <option>Maharashtra</option>
-                        <option>Manipur</option>
-                        <option>Meghalaya</option>
-                        <option>Mizoram</option>
-                        <option>Nagaland</option>
-                        <option>Odisha</option>
-                        <option>Pondicherry</option>
-                        <option>Punjab</option>
-                        <option>Rajasthan</option>
-                        <option>Sikkim</option>
-                        <option>Tamil Nadu</option>
-                        <option>Telangana</option>
-                        <option>Tripura</option>
-                        <option>Uttar Pradesh</option>
-                        <option>Uttarakhand</option>
-                        <option>West Bengal</option>
-                    </select>
+                    <label class="input-label" for="installationDate">Installation Date *</label>
+                    <input type="date" id="installationDate" required>
+                    <div class="error-text">Required</div>
                 </div>
                 <div class="input-group">
-                    <label class="input-label">District *</label>
-                    <input type="text" id="district" placeholder="Enter district" required>
+                    <label class="input-label" for="nextServiceDate">Next Service Date *</label>
+                    <input type="date" id="nextServiceDate" required>
+                    <div class="error-text">Required</div>
                 </div>
             </div>
 
-            <div class="input-row">
-                <div class="input-group">
-                    <label class="input-label">City *</label>
-                    <input type="text" id="city" placeholder="Enter city" required>
-                </div>
-                <div class="input-group">
-                    <label class="input-label">PIN Code *</label>
-                    <input type="number" id="pinCode" placeholder="6 digit PIN code" maxlength="6" inputmode="numeric" autocomplete="postal-code" required>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Country</label>
-                <input type="text" value="India" disabled>
-            </div>
-
-            <!-- SECTION 3: PRODUCT DETAILS -->
-            <div class="section-heading">Product Details</div>
-
-            <div class="input-group">
-                <label class="input-label">Product Serial Number *</label>
-                <div style="position: relative;">
-                    <input type="text" id="serialNumber"
-                        placeholder="Enter serial number (Numbers & uppercase alphabets only)"
-                        style="text-transform: uppercase;" required>
-                    <button type="button" id="scanBtn"
-                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 1.2rem;">📷</button>
-                </div>
-                <div class="info-box">
-                    <span>ℹ️</span>
-                    <span>Where to find serial number?<br>Check the product body, carton box or warranty card for the
-                        serial number</span>
-                </div>
-                <p style="font-size: 0.8rem; color: #666; margin-top: -10px; margin-bottom: 20px;">Or scan QR code on
-                    product</p>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Model Name *</label>
-                <input type="text" id="modelName" placeholder="e.g. Divino DG 15L" required>
-                <select id="category" style="margin-top: 10px;">
-                    <option value="">Select Category</option>
-                    <option>Voltage Stabilizers</option>
-                    <option>Inverter & Batteries</option>
-                    <option>Water Heaters</option>
-                    <option>Ceiling Fans</option>
-                    <option>Kitchen Appliances</option>
-                    <option>Water Purifiers</option>
-                    <option>Pumps</option>
-                    <option>Air Coolers</option>
-                    <option>Solar Products</option>
-                    <option>Modular Switches</option>
-                    <option>Wires & Cables</option>
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Warranty Proof *</label>
-                <div style="display: flex; gap: 20px; font-size: 0.95rem;">
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="radio" name="proofType" value="Invoice" style="width: auto;" checked> Bill /
-                        Invoice
-                    </label>
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="radio" name="proofType" value="Warranty Card" style="width: auto;"> Warranty Card
-                    </label>
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Date of Purchase *</label>
-                <input type="date" id="purchaseDate" required>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Upload Warranty Proof Copy *</label>
-                <div class="upload-area" id="dropZone">
-                    <span class="upload-icon">📤</span>
-                    <p id="uploadText">Drag and drop area OR click to upload</p>
-                    <p style="font-size: 0.75rem; color: #888; margin-top: 5px;">Accepted: JPG, PNG, PDF only (Max: 5MB)
-                    </p>
-                    <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.pdf" style="display: none;">
-                </div>
-                <div class="progress-bar" id="progressBar">
-                    <div class="progress-fill" id="progressFill"></div>
-                </div>
-                <div class="file-preview" id="filePreview">
-                    <span id="previewName" style="flex: 1; font-size: 0.85rem; font-weight: 500;">document.pdf</span>
-                    <button type="button" id="removeFile"
-                        style="background: none; border: none; color: var(--error-red); cursor: pointer; font-weight: 700;">✕</button>
-                </div>
-            </div>
-
-            <!-- SECTION 4: PREFERENCES -->
-            <div class="section-heading">Preferences (Optional)</div>
-
-            <div class="input-group">
-                <label class="input-label">Preferred Language for Callback</label>
-                <select id="language">
-                    <option value="">Select</option>
-                    <option>Hindi</option>
-                    <option>English</option>
-                    <option>Malayalam</option>
-                    <option>Tamil</option>
-                    <option>Telugu</option>
-                    <option>Kannada</option>
-                </select>
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Dealer's Name</label>
-                <input type="text" id="dealerName" placeholder="Name of dealer (optional)">
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Dealer's Address</label>
-                <input type="text" id="dealerAddress" placeholder="Dealer address (optional)">
-            </div>
-
-            <div class="input-group">
-                <label class="input-label">Dealer's Contact Number</label>
-                <div class="input-with-prefix">
-                    <span class="prefix">+91</span>
-                    <input type="tel" id="dealerContact" placeholder="Dealer contact (optional)" maxlength="10">
-                </div>
-            </div>
-
-            <div class="input-group">
-                <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.9rem; cursor: pointer;">
-                    <input type="checkbox" id="smsUpdates" style="width: auto; margin-top: 3px;">
-                    <div>
-                        Interested in receiving SMS updates
-                        <p style="font-size: 0.75rem; color: #888;">(To be selected by Dealer only)</p>
-                    </div>
-                </label>
-            </div>
-
-            <div class="submit-container">
+            <div class="submit-container" style="margin-top: 20px;">
                 <button type="submit" class="btn-submit" id="btnSubmit">
-                    🛡️ Activate Warranty & Register Product
+                    🛡️ Activate Warranty
                 </button>
             </div>
 
@@ -428,28 +203,24 @@
 
             <div class="reg-details-card">
                 <div class="reg-row">
-                    <span>Registration ID:</span>
-                    <span id="res-id">WR-1234567890</span>
+                    <span>Email:</span>
+                    <span id="res-email">your@email.com</span>
                 </div>
                 <div class="reg-row">
-                    <span>Product:</span>
-                    <span id="res-product">Divino DG 15L</span>
+                    <span>Product Name:</span>
+                    <span id="res-product">Divino Water Heater</span>
                 </div>
                 <div class="reg-row">
-                    <span>Serial Number:</span>
-                    <span id="res-serial">ABC123XYZ456</span>
+                    <span>Product ID:</span>
+                    <span id="res-id">VG-WH-001</span>
                 </div>
                 <div class="reg-row">
-                    <span>Date of Purchase:</span>
+                    <span>Installation Date:</span>
                     <span id="res-date">01-Apr-2026</span>
                 </div>
                 <div class="reg-row">
-                    <span>Warranty Valid Until:</span>
-                    <span id="res-valid">01-Apr-2028</span>
-                </div>
-                <div class="reg-row">
-                    <span>Registered Mobile:</span>
-                    <span id="res-mobile">+91 9876543210</span>
+                    <span>Next Service Date:</span>
+                    <span id="res-next">01-Apr-2027</span>
                 </div>
             </div>
 
